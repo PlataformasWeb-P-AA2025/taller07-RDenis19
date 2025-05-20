@@ -40,8 +40,8 @@ class Jugador(Base):
     __tablename__ = 'jugador'
     id = Column(Integer, primary_key=True)
     nombre = Column(String(100), nullable=False)
-    dorsal = Column(Integer)
     posicion = Column(String(100))
+    dorsal = Column(Integer)
     # se agrega la columna club_id como ForeignKey
     # se hace referencia al id de la entidad club
     club_id = Column(Integer, ForeignKey('club.id'))
@@ -50,16 +50,8 @@ class Jugador(Base):
     club  = relationship("Club", back_populates="jugadores")
     
     def __repr__(self):
-        return "Jugador: %s - dorsal:%d - posición: %s" % (
-                self.nombre, self.dorsal, self.posicion)
+        return "Jugador: %s - posición:%s - dorsal: %d" % (
+                self.nombre, self.posicion, self.dorsal)
 
 Base.metadata.create_all(engine)
-
-
-
-
-
-
-
-
 
